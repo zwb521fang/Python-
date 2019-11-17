@@ -1,0 +1,34 @@
+import turtle
+from turtle import *
+
+
+def koch(size, n):
+    if n == 0:
+        turtle.fd(size)
+    else:
+        for angle in [0, 60, -120, 60]:
+            turtle.left(angle)#逆时针移动degree°
+            koch(size / 3, n - 1)
+
+
+def main():
+    turtle.setup(600, 600)#画布大小
+    turtle.pen(speed=0, pencolor='blue')
+    turtle.penup()#提起笔移动，不绘制图形，用于另起一个地方绘制
+    turtle.goto(-200, 100)#将画笔移动到坐标为x,y的位置
+    turtle.pendown()#移动时绘制图形
+    turtle.pensize(1)#设置画笔的宽度；
+    turtle.pencolor('red')#当前画笔颜色
+    level = 5
+    length =700
+    turtle.color("black", "skyblue")
+    koch(length, level)
+    turtle.right(120)#顺时针移动degree°
+    koch(length, level)
+    turtle.right(120)#顺时针移动degree°
+    koch(length, level)
+    turtle.hideturtle()#隐藏画笔的turtle形状
+    done() #启动事件循环
+
+
+main()
